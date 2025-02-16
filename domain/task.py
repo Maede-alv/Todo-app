@@ -1,25 +1,14 @@
-from enum import Enum
-
-
-class TaskStatus(Enum):
-    TODO = "To-Do"
-    IN_PROGRESS = "In Progress"
-    DONE = "Done"
-
-    def next_status(self):
-        """Move task to the next logical status."""
-        if self == TaskStatus.TODO:
-            return TaskStatus.IN_PROGRESS
-        elif self == TaskStatus.IN_PROGRESS:
-            return TaskStatus.DONE
-        return self
-
+from domain.enums.task_status import TaskStatus
 
 class Task:
-    def __init__(self, name: str, status: TaskStatus = TaskStatus.TODO):
+    def __init__(self, id: int, name: str, status: TaskStatus = TaskStatus.TODO):
+        self.id = id
         self.name = name
         self.status = status
 
     def change_status(self):
         """Move the task to the next status."""
         self.status = self.status.next_status()
+
+    def __str__(self):
+        return f"Task(id={self.id}, name={self.name}, status={self.status.value})"

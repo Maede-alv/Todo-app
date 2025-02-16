@@ -1,8 +1,7 @@
 import flet as ft
-from domain.task import TaskStatus
+from domain.task import Task, TaskStatus
 from application.task_service import TaskService
-from infrastructure.task_repository import TaskRepository
-
+from application.abstract_task_repo import TaskRepository
 
 class TodoApp(ft.Column):
     def __init__(self, repo: TaskRepository, service: TaskService):
@@ -24,6 +23,7 @@ class TodoApp(ft.Column):
                 ft.Tab(text="Done"),
             ],
         )
+        self.build()
 
     def build(self):
         return ft.Column(
@@ -79,43 +79,42 @@ class TodoApp(ft.Column):
             self.new_task_input.value = ""
             self.refresh_task_list()
 
-    def delete_task(self, task_name):
-        self.service.delete_task(task_name)
+    def delete_task(self, task_id: int):
+        self.service.delete_task(task_id)
         self.refresh_task_list()
 
-    def change_task_status(self, task_name):
-        self.service.change_task_status(task_name)
+    def change_task_status(self, task_id: int):
+        self.service.change_task_status(task_id)
         self.refresh_task_list()
 
-    def clear_completed_tasks(self, _):
-        self.service.clear_completed()
-        self.refresh_task_list()
-
-    def create_task_row(self, task):
+    def create_task_row(self, task: Task):
         return ft.Row(
             controls=[
                 ft.Text(task.name),
                 ft.Text(task.status.value),
                 (
                     ft.ElevatedButton(
-                        "Next", on_click=lambda _: self.change_task_status(task.name)
+                        "Next", on_click=lambda _: self.change_task_status(task.id)
                     )
                     if task.status != TaskStatus.DONE
                     else ft.Text("✅")
                 ),
                 ft.IconButton(
-                    ft.icons.DELETE, on_click=lambda _: self.delete_task(task.name)
+                    ft.icons.DELETE, on_click=lambda _: self.delete_task(task.id)
                 ),
             ]
         )
 
+def start_app(repo: TaskRepository, service: TaskService):
+    """Start the Flet app."""
+    def main(page: ft.Page):
+        # Configure Page
+        page.title = "ToDo App"
+        page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+        page.scroll = ft.ScrollMode.ADAPTIVE
 
-def main(page: ft.Page):
-    page.title = "ToDo App"
-    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.scroll = ft.ScrollMode.ADAPTIVE
+        # Initialize Presentation Layer
+        todo_app = TodoApp(repo, service)
+        page.add(todo_app)
 
-    repo = TaskRepository()
-    service = TaskService(repo)
-
-    page.add(TodoApp(repo, service))
+    ft.app(target=main)

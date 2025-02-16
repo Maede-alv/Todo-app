@@ -1,24 +1,25 @@
 from domain.task import Task, TaskStatus
-from infrastructure.task_repository import TaskRepository
-
+from application.abstract_task_repo import TaskRepository
 
 class TaskService:
     def __init__(self, repository: TaskRepository):
         self.repository = repository
+        self.next_id = 1  # Auto-incrementing ID counter
 
     def add_task(self, name: str):
-        """Create a new task."""
-        task = Task(name)
-        self.repository.add_task(task)
+        """Create a new task with an auto-incremented ID."""
+        task = Task(self.next_id, name)
+        self.repository.add(task)
+        self.next_id += 1  # Increment ID for the next task
 
-    def delete_task(self, name: str):
-        """Delete an existing task."""
-        self.repository.delete_task(name)
+    def delete_task(self, task_id: int):
+        """Delete an existing task by ID."""
+        self.repository.delete(task_id)
 
-    def change_task_status(self, name: str):
+    def change_task_status(self, task_id: int):
         """Move a task to the next status."""
-        for task in self.repository.get_all_tasks():
-            if task.name == name:
+        for task in self.repository.list():
+            if task.id == task_id:
                 task.change_status()
                 return True
         return False
@@ -26,5 +27,5 @@ class TaskService:
     def list_tasks(self, status: TaskStatus = None):
         """List tasks based on their status."""
         if status:
-            return self.repository.get_tasks_by_status(status)
-        return self.repository.get_all_tasks()
+            return [task for task in self.repository.list() if task.status == status]
+        return self.repository.list()

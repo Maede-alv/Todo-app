@@ -1,22 +1,18 @@
-from domain.task import Task, TaskStatus
+from domain.task import Task
+from application.abstract_task_repo import TaskRepository
 
-
-class TaskRepository:
+class InMemoryStorage(TaskRepository):
     def __init__(self):
-        self.tasks = []  # In-memory storage
+        self.tasks = []
 
-    def add_task(self, task: Task):
+    def add(self, task: Task):
         """Add a new task."""
         self.tasks.append(task)
 
-    def delete_task(self, task_name: str):
-        """Delete a task by name."""
-        self.tasks = [task for task in self.tasks if task.name != task_name]
+    def delete(self, task_id: int):
+        """Delete a task by ID."""
+        self.tasks = [task for task in self.tasks if task.id != task_id]
 
-    def get_all_tasks(self):
+    def list(self):
         """Return all tasks."""
         return self.tasks
-
-    def get_tasks_by_status(self, status: TaskStatus):
-        """Return tasks filtered by status."""
-        return [task for task in self.tasks if task.status == status]

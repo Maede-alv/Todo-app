@@ -38,9 +38,3 @@ flet-android:
 flet-ios:
 	@echo "Running the application on iOS..."
 	@flet run --ios $(if $(PORT),--port $(PORT),)
-
-# Usage:
-# make flet-run       --> Runs the app normally
-# make flet-web PORT=8000  --> Runs on web with optional port
-# make flet-android PORT=3423  --> Runs on Android with optional port
-# make flet-ios PORT=5000  --> Runs on iOS with optional port
