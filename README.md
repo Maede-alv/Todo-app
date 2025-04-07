@@ -1,4 +1,3 @@
-```markdown
 # Todo App 📝
 
 A simple and scalable **To-Do List** application built with [Flet](https://flet.dev/), now with **PostgreSQL support**, **Dockerization**, and **automatic HTTPS via Traefik & Let's Encrypt**.
