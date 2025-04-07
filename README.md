@@ -1,54 +1,100 @@
-# Todo App
+```markdown
+# Todo App 📝
 
-This is a simple **To-Do List** application built with [Flet](https://flet.dev/). It allows users to add, update, filter, and delete tasks.
+A simple and scalable **To-Do List** application built with [Flet](https://flet.dev/), now with **PostgreSQL support**, **Dockerization**, and **automatic HTTPS via Traefik & Let's Encrypt**.
 
-## Features
-- Add new tasks
-- Mark tasks as "To-Do", "In Progress", or "Done"
-- Delete tasks
+## ✨ Features
+- Add, update, and delete tasks
+- Track task progress with statuses: "To-Do", "In Progress", "Done"
 - Filter tasks by status
+- Supports both in-memory and PostgreSQL storage
+- Dockerized with Traefik reverse proxy
+- Automatic SSL certificates via DNS challenge (e.g., Cloudflare)
 
-## Installation
-### Prerequisites
-- Python 3 installed
+---
+
+## 🧰 Setup Options
+
+### Option 1: Local Python Development
+
+#### ✅ Prerequisites
+- Python 3
+- `make`
 - Virtual environment (recommended)
 
-### Setup
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-username/todo-app.git
-   cd todo-app
-   ```
-2. Create and activate a virtual environment:
-   ```sh
-   make venv
-   ```
-3. Install dependencies:
-   ```sh
-   make install
-   ```
+#### 📦 Installation
+```sh
+git clone https://github.com/your-username/todo-app.git
+cd todo-app
+make venv       # Creates virtual environment
+make install    # Installs required packages
+```
 
-## Usage
-You can run the application using the provided **Makefile**:
-
-### Run the application:
+#### 🚀 Run the App
 ```sh
 make flet-run
 ```
 
-### Run on Web (optional port):
+#### 🌐 Run on Web (custom port optional)
 ```sh
 make flet-web PORT=8000
 ```
 
-### Run on Android (optional port):
+#### 📱 Android / iOS
 ```sh
 make flet-android PORT=3423
-```
-For Android setup, refer to [Testing on Android](https://flet.dev/docs/getting-started/testing-on-android).
-
-### Run on iOS (optional port):
-```sh
 make flet-ios PORT=5000
 ```
-For iOS setup, refer to [Testing on iOS](https://flet.dev/docs/getting-started/testing-on-ios).
+
+> For mobile setup guides:  
+[Android Setup](https://flet.dev/docs/getting-started/testing-on-android) | [iOS Setup](https://flet.dev/docs/getting-started/testing-on-ios)
+
+---
+
+### Option 2: Run with Docker, PostgreSQL & Traefik (Recommended for Production) 🐳🔒
+
+#### 🌍 Requirements
+- Docker & Docker Compose
+- Valid domain (e.g., `todo.example.com`)
+- DNS provider API token (e.g., Cloudflare)
+
+#### ⚙️ Steps
+1. **Configure environment variables**  
+   Copy `.env.example` to `.env` and set your values:
+   ```env
+   STORAGE_TYPE=database
+   DB_DIALECT=postgresql
+   DB_USER=todo_user
+   DB_PASSWORD=todo_pass
+   DB_HOST=db
+   DB_PORT=5432
+   DB_NAME=todo_db
+
+   CF_DNS_API_TOKEN=your_cloudflare_token
+   ACME_EMAIL=your_email@example.com
+   DOMAIN=your-domain.com
+   ```
+
+2. **Start services**
+   ```sh
+   sudo docker-compose up -d
+   ```
+
+3. **Visit your app**
+   ```
+   https://todo.your-domain.com
+   ```
+
+> DNS Challenge is used for SSL with Let's Encrypt.  
+Make sure your DNS provider supports API access (e.g., Cloudflare).
+
+---
+
+## 🔐 SSL Certificates
+
+- Managed automatically by Traefik using DNS challenge
+- Stored in the `letsencrypt/` folder (auto-created)
+- Do **not** commit this folder to version control:
+  ```gitignore
+  letsencrypt/
+  ```
