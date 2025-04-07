@@ -117,4 +117,4 @@ def start_app(repo: TaskRepository, service: TaskService):
         todo_app = TodoApp(repo, service)
         page.add(todo_app)
 
-    ft.app(target=main)
+    ft.app(target=main, view=ft.WEB_BROWSER, port=8000)

@@ -9,7 +9,7 @@ class TaskService:
     def add_task(self, name: str):
         """Create a new task with an auto-incremented ID."""
         task = Task(self.next_id, name)
-        self.repository.add(task)
+        self.repository.create(task)
         self.next_id += 1  # Increment ID for the next task
 
     def delete_task(self, task_id: int):
@@ -21,6 +21,7 @@ class TaskService:
         for task in self.repository.list():
             if task.id == task_id:
                 task.change_status()
+                self.repository.update(task)  # Persist the change
                 return True
         return False
 
