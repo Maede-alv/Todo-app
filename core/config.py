@@ -10,7 +10,7 @@ class AppConfig:
         load_dotenv()
         return {
             'storage': {
-                'type': os.getenv('STORAGE_TYPE', 'database'),  # 'memory' or 'database'
+                'type': os.getenv('STORAGE_TYPE', 'memory'),  # 'memory' or 'database'
                 'database': {
                     'dialect': os.getenv('DB_DIALECT', 'postgresql'),
                     'user': os.getenv('DB_USER'),
