@@ -1,6 +1,7 @@
 from domain.task import Task
 from application.abstract_task_repo import TaskRepository
 
+
 class MemoryTaskRepository(TaskRepository):
     def __init__(self):
         self.tasks = []
@@ -16,7 +17,7 @@ class MemoryTaskRepository(TaskRepository):
     def list(self):
         """Return all tasks."""
         return self.tasks
-    
+
     def update(self, task: Task):
         """Update an existing task."""
         for i, existing_task in enumerate(self.tasks):

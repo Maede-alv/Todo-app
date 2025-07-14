@@ -1,6 +1,7 @@
 from domain.task import Task, TaskStatus
 from application.abstract_task_repo import TaskRepository
 
+
 class TaskService:
     def __init__(self, repository: TaskRepository):
         self.repository = repository
@@ -28,5 +29,6 @@ class TaskService:
     def list_tasks(self, status: TaskStatus = None):
         """List tasks based on their status."""
         if status:
-            return [task for task in self.repository.list() if task.status == status]
+            return [task for task in self.repository.list() 
+                    if task.status == status]
         return self.repository.list()

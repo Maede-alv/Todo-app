@@ -3,6 +3,7 @@ from domain.task import Task, TaskStatus
 from application.task_service import TaskService
 from application.abstract_task_repo import TaskRepository
 
+
 class TodoApp(ft.Column):
     def __init__(self, repo: TaskRepository, service: TaskService):
         super().__init__()
@@ -31,7 +32,8 @@ class TodoApp(ft.Column):
                 ft.Row(
                     [
                         ft.Text(
-                            value="Todos", theme_style=ft.TextThemeStyle.HEADLINE_MEDIUM
+                            value="Todos",
+                            theme_style=ft.TextThemeStyle.HEADLINE_MEDIUM
                         )
                     ],
                     alignment=ft.MainAxisAlignment.CENTER,
@@ -94,19 +96,23 @@ class TodoApp(ft.Column):
                 ft.Text(task.status.value),
                 (
                     ft.ElevatedButton(
-                        "Next", on_click=lambda _: self.change_task_status(task.id)
+                        "Next",
+                        on_click=lambda _: self.change_task_status(task.id)
                     )
                     if task.status != TaskStatus.DONE
                     else ft.Text("✅")
                 ),
                 ft.IconButton(
-                    ft.icons.DELETE, on_click=lambda _: self.delete_task(task.id)
+                    ft.icons.DELETE,
+                    on_click=lambda _: self.delete_task(task.id)
                 ),
             ]
         )
 
+
 def start_app(repo: TaskRepository, service: TaskService):
     """Start the Flet app."""
+
     def main(page: ft.Page):
         # Configure Page
         page.title = "ToDo App"

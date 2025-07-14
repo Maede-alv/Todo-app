@@ -6,6 +6,7 @@ from domain.enums.task_status import TaskStatus
 from application.abstract_task_repo import TaskRepository
 from psycopg2 import OperationalError, DatabaseError
 
+
 class PostgresTaskRepository(TaskRepository):
     def __init__(self, connection_string: str):
         self.connection_string = connection_string
@@ -42,13 +43,15 @@ class PostgresTaskRepository(TaskRepository):
         """Create tasks table if it doesn't exist"""
         try:
             with self._get_cursor() as cur:
-                cur.execute("""
+                cur.execute(
+                    """
                     CREATE TABLE IF NOT EXISTS tasks (
                         id SERIAL PRIMARY KEY,
                         name TEXT NOT NULL,
                         status TEXT NOT NULL
                     )
-                """)
+                """
+                )
         except Exception as e:
             raise RuntimeError(f"Failed to create tasks table: {e}")
 
@@ -58,7 +61,7 @@ class PostgresTaskRepository(TaskRepository):
             with self._get_cursor() as cur:
                 cur.execute(
                     "INSERT INTO tasks (id, name, status) VALUES (%s, %s, %s)",
-                    (task.id, task.name, task.status.value)  # Store the enum value
+                    (task.id, task.name, task.status.value),
                 )
         except Exception as e:
             raise RuntimeError(f"Failed to add task: {e}")
@@ -80,18 +83,19 @@ class PostgresTaskRepository(TaskRepository):
                     Task(
                         id=row[0],
                         name=row[1],
-                        status=TaskStatus(row[2])  # Convert string back to enum
-                    ) for row in cur.fetchall()
+                        status=TaskStatus(row[2]),
+                    )
+                    for row in cur.fetchall()
                 ]
         except Exception as e:
             raise RuntimeError(f"Failed to list tasks: {e}")
-    
+
     def update(self, task: Task) -> None:
         try:
             with self._get_cursor() as cur:
                 cur.execute(
                     "UPDATE tasks SET name = %s, status = %s WHERE id = %s",
-                    (task.name, task.status.value, task.id)
+                    (task.name, task.status.value, task.id),
                 )
         except Exception as e:
             raise RuntimeError(f"Failed to update task: {e}")

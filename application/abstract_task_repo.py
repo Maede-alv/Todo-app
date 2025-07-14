@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from domain.task import Task
 
+
 class TaskRepository(ABC):
     @abstractmethod
     def create(self, task: Task) -> None:
