@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/Maede-alv/Todo-app/compare/v0.3.0...v0.3.1) (2025-07-17)
+
+
+### Bug Fixes
+
+* fix ci ([72f1589](https://github.com/Maede-alv/Todo-app/commit/72f15892a8cce1cac9a8ff3526b610012131d2fc))
+* remove redundant files and fixed ci ([d73fa70](https://github.com/Maede-alv/Todo-app/commit/d73fa702a0e098f70a874a72349a1655b9b5a028))
+
 ## [0.3.0](https://github.com/Maede-alv/Todo-app/compare/v0.2.0...v0.3.0) (2025-07-17)
 
 
