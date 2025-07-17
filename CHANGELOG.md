@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/Maede-alv/Todo-app/compare/v0.3.1...v0.3.2) (2025-07-17)
+
+
+### Bug Fixes
+
+* fix Readme file ([77eb66b](https://github.com/Maede-alv/Todo-app/commit/77eb66b0bb6b6094081423de46f7a4323412e60f))
+
 ## [0.3.1](https://github.com/Maede-alv/Todo-app/compare/v0.3.0...v0.3.1) (2025-07-17)
 
 
