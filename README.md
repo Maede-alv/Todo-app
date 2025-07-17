@@ -6,35 +6,35 @@ I’ve added emojis, better sectioning, and improved readability while keeping a
 # **Todo App** 📝
 
 A **simple, scalable, and modern To‑Do List application** built with [Flet](https://flet.dev/).
-✅ **PostgreSQL support**
-✅ **Dockerized with Traefik**
-✅ **Automatic HTTPS via Let’s Encrypt**
+  - **PostgreSQL support**
+  - **Dockerized with Traefik**
+  - **Automatic HTTPS via Let’s Encrypt**
 
 ---
 
-## 🌟 **Features**
+## **Features**
 
-✅ Add, update, and delete tasks
-✅ Track progress: **To‑Do**, **In Progress**, **Done**
-✅ Filter tasks by status
-✅ In‑memory or PostgreSQL storage
-✅ 🚀 **Dockerized** with Traefik reverse proxy
-✅ 🔒 **Automatic SSL** (DNS challenge with e.g. Cloudflare)
-✅ 🤖 **CI/CD** with GitHub Actions (tests, linting, semantic releases)
+- Add, update, and delete tasks
+- Track progress: **To‑Do**, **In Progress**, **Done**
+- Filter tasks by status
+- In‑memory or PostgreSQL storage
+- **Dockerized** with Traefik reverse proxy
+- **Automatic SSL** (DNS challenge with e.g. Cloudflare)
+- **CI/CD** with GitHub Actions (tests, linting, semantic releases)
 
 ---
 
-## 🧰 **Setup Options**
+## **Setup Options**
 
-### 🔧 **Option 1: Local Python Development**
+### **Option 1: Local Python Development**
 
-#### ✅ Prerequisites
+#### Prerequisites
 
 * Python **3.12**
 * `make` (optional)
 * A Python virtual environment (recommended)
 
-#### 📦 Installation
+#### Installation
 
 ```sh
 git clone https://github.com/Maede-alv/Todo-app.git
@@ -44,19 +44,19 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-#### 🚀 Run the App
+#### Run the App
 
 ```sh
 flet run main.py
 ```
 
-#### 🌐 Run on Web (custom port optional)
+#### Run on Web (custom port optional)
 
 ```sh
 flet run main.py --web --port 8000
 ```
 
-#### 📱 Run on Mobile
+####  Run on Mobile
 
 ```sh
 flet run main.py --android --port 3423
@@ -67,15 +67,15 @@ flet run main.py --ios --port 5000
 
 ---
 
-### 🐳 **Option 2: Run with Docker, PostgreSQL & Traefik** (⭐ Recommended for Production)
+###  **Option 2: Run with Docker, PostgreSQL & Traefik**
 
-#### 🌍 Requirements
+#### Requirements
 
 * Docker & Docker Compose
 * A valid domain (e.g., `todo.example.com`)
 * DNS provider API token (e.g., Cloudflare)
 
-#### ⚙️ Steps
+#### Steps
 
 1. **Configure environment variables**
    Copy `.env.example` to `.env` and set your values:
@@ -103,15 +103,15 @@ flet run main.py --ios --port 5000
 3. **Visit your app**
    👉 [https://todo.your-domain.com](https://todo.your-domain.com)
 
-✅ **SSL Certificates** are managed automatically by Traefik and stored in the `letsencrypt/` folder (⚠️ do **not** commit this folder).
+ **SSL Certificates** are managed automatically by Traefik and stored in the `letsencrypt/` folder (⚠️ do **not** commit this folder).
 
 ---
 
-## 🤖 **Local CI/CD Testing with act**
+## **Local CI/CD Testing with act**
 
 Test your GitHub Actions workflow locally with [`act`](https://github.com/nektos/act).
 
-#### ✅ Prerequisites
+#### Prerequisites
 
 * Docker
 * Install act:
@@ -120,13 +120,13 @@ Test your GitHub Actions workflow locally with [`act`](https://github.com/nektos
   curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
   ```
 
-#### 🔑 GitHub PAT
+#### GitHub PAT
 
 Generate a **Personal Access Token** (repo scope):
 
 * GitHub → Settings → Developer settings → Personal access tokens (classic)
 
-#### ⚙️ Configure act
+#### Configure act
 
 Create `.actrc`:
 
@@ -151,7 +151,7 @@ pip install pytest flake8 flet
 pip install -r requirements.txt
 ```
 
-#### 🚀 Run Workflows
+#### Run Workflows
 
 ```sh
 git checkout main
@@ -164,16 +164,16 @@ act -v             # Verbose mode
 
 ---
 
-## 📚 **Contributing**
+## **Contributing**
 
-💡 **Commit messages:** Follow [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat: add new filter`, `fix: resolve crash`).
-🧪 **Run tests:**
+ **Commit messages:** Follow [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat: add new filter`, `fix: resolve crash`).
+ **Run tests:**
 
 ```sh
 pytest
 ```
 
-✨ **Lint code:**
+ **Lint code:**
 
 ```sh
 flake8 . --max-line-length=127
@@ -184,14 +184,3 @@ flake8 . --max-line-length=127
 ```sh
 act
 ```
-
----
-
-## **Show your support**
-
-If you like this project, ⭐ **star this repo** to help others find it!
-Feel free to open issues or submit PRs. Happy coding! ✨
-
----
-
-If you’d like, I can also add badges (build status, license, Docker pulls, etc.) or a table of contents. Let me know! 🚀
