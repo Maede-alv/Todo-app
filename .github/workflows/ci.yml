@@ -10,11 +10,11 @@ on:
     #   - '.github/workflows/**'
   pull_request:
     branches: [main]
-    # paths-ignore:
-    #   - '**.md'
-    #   - '.gitignore'
-    #   - 'README.md'
-    #   - '.github/workflows/**'
+    paths-ignore:
+      - '**.md'
+      - '.gitignore'
+      - 'README.md'
+      - '.github/workflows/**'
 
 jobs:
   test:
