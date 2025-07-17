@@ -29,6 +29,6 @@ class TaskService:
     def list_tasks(self, status: TaskStatus = None):
         """List tasks based on their status."""
         if status:
-            return [task for task in self.repository.list() 
+            return [task for task in self.repository.list()
                     if task.status == status]
         return self.repository.list()
