@@ -3,17 +3,11 @@ name: CI
 on:
   push:
     branches: [main]
-    # paths-ignore:
-    #   - '**.md'
-    #   - '.gitignore'
-    #   - 'README.md'
-    #   - '.github/workflows/**'
   pull_request:
     branches: [main]
     paths-ignore:
       - '**.md'
       - '.gitignore'
-      - 'README.md'
       - '.github/workflows/**'
 
 jobs:
@@ -36,7 +30,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -54,6 +47,7 @@ jobs:
   release:
     needs: test
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       contents: write
       pull-requests: write
@@ -62,12 +56,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Debug Token Permissions
-        run: |
-            curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
-                -H "Accept: application/vnd.github.v3+json" \
-                https://api.github.com/repos/Maede-alv/Todo-app/labels 
 
       - name: Release Please
         uses: googleapis/release-please-action@v4
