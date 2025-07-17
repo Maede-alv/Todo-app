@@ -1,0 +1,28 @@
+# Changelog
+
+## 0.1.0 (2025-07-17)
+
+
+### Features
+
+* add ci/cd ([f48379d](https://github.com/Maede-alv/Todo-app/commit/f48379d60e370b45fe92cb33696da2287165b673))
+* add sqlalchemy orm ([7692446](https://github.com/Maede-alv/Todo-app/commit/76924468ff86a0c63f8c98b78d742dddc1646f9b))
+* **docker:** add Dockerfile and docker-compose with Traefik and SSL support ([aa5b122](https://github.com/Maede-alv/Todo-app/commit/aa5b122c791beac9c50829e0ec71276103ee4adc))
+* setup config file for semantic versioning ([7378bc9](https://github.com/Maede-alv/Todo-app/commit/7378bc90b542597f309a8253005428a2fa672db0))
+* **storage:** add PostgreSQL repository for todo app ([12d561c](https://github.com/Maede-alv/Todo-app/commit/12d561c9b18ab628175480de5f9384c2209de622))
+
+
+### Bug Fixes
+
+* change some of logics ([b5322ca](https://github.com/Maede-alv/Todo-app/commit/b5322ca607844a804351fa7a9d6549a33fe729c1))
+* commented some settings ([92acad9](https://github.com/Maede-alv/Todo-app/commit/92acad9de5552fd0ace7f126f62a74f85526682b))
+* fix ci ([e41b387](https://github.com/Maede-alv/Todo-app/commit/e41b387dfeb8af71092a8a603df3df431fa37efe))
+* fix linting issues ([fc0bf4a](https://github.com/Maede-alv/Todo-app/commit/fc0bf4a4bb758abcf992717b50dd42a84393ba79))
+* fix some ci issues ([2eef4fd](https://github.com/Maede-alv/Todo-app/commit/2eef4fd1944ace0bcaf7c8925669bd7d731e0986))
+* fixed ci ([5a9363e](https://github.com/Maede-alv/Todo-app/commit/5a9363e201c263dac196b4ea34b71385b735e596))
+* Update README.md ([5cdc26f](https://github.com/Maede-alv/Todo-app/commit/5cdc26fc3d963b494d73e12db356158636c6c831))
+
+
+### Documentation
+
+* update README with Docker, PostgreSQL, and Traefik setup instructions ([fc5563b](https://github.com/Maede-alv/Todo-app/commit/fc5563bbbdbb386bd73812d1ecca5ec97fd09806))
