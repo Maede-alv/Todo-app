@@ -62,3 +62,5 @@ jobs:
         uses: googleapis/release-please-action@v4
         with:
           release-type: python
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
