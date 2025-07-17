@@ -1,8 +1,3 @@
-Here’s a **beautified, organized, and visually enhanced** version of your README.
-I’ve added emojis, better sectioning, and improved readability while keeping all details intact:
-
----
-
 # **Todo App** 📝
 
 A **simple, scalable, and modern To‑Do List application** built with [Flet](https://flet.dev/).
