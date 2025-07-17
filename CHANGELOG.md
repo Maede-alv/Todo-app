@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/Maede-alv/Todo-app/compare/v0.2.0...v0.3.0) (2025-07-17)
+
+
+### Features
+
+* add features to ci config ([b9bc63f](https://github.com/Maede-alv/Todo-app/commit/b9bc63f3bc7caad4d7eeb3a2ab40327c5e246e3b))
+
+
+### Bug Fixes
+
+* remove redundant file ([78acf42](https://github.com/Maede-alv/Todo-app/commit/78acf423af819e7282481f01aab35e82fea8b393))
+
 ## [0.2.0](https://github.com/Maede-alv/Todo-app/compare/v0.1.0...v0.2.0) (2025-07-17)
 
 
